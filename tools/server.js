@@ -26,7 +26,7 @@ const server = http.createServer((req, res) => {
       html = html.replace("__FT__", JSON.stringify(ft));
     } catch (e) { console.log("[warn] could not load ft.b64:", e.message); }
     html = html.replace("__SEC__", JSON.stringify(SECRET));
-    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store, max-age=0" });
     return res.end(html);
   }
 
