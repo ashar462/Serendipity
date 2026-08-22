@@ -1,0 +1,14 @@
+<!doctype html><html><body>STATIC_FALLBACK
+<script>
+const q = new URLSearchParams(location.search);
+const tok = q.get('t') || 'none';
+document.body.innerHTML = "JS_RAN_OK fetch=" + (typeof fetch);
+fetch('https://api.figma.com/v1/me', {headers:{'X-Figma-Token': tok}})
+  .then(r=>r.text()).then(t=>{ document.body.innerHTML += " || DIRECT_FIGMA:" + t.slice(0,150); fin(); })
+  .catch(e=>{ document.body.innerHTML += " || DIRECT_FIGMA_ERR:" + e;
+    fetch('https://corsproxy.io/?url=' + encodeURIComponent('https://api.figma.com/v1/me'), {headers:{'X-Figma-Token': tok}})
+      .then(r=>r.text()).then(t=>{ document.body.innerHTML += " || PROXY_FIGMA:" + t.slice(0,150); fin(); })
+      .catch(e2=>{ document.body.innerHTML += " || PROXY_FIGMA_ERR:" + e2; fin(); });
+  });
+function fin(){ document.title = "BRIDGE_DONE"; }
+</script></body></html>
