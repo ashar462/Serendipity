@@ -46,8 +46,8 @@ const KEY = "BO6GAA0KF1Q0W9SzpfcZym";
 const REPO = "ashar462/Serendipity";
 const BRANCH = "arena/01a02942-serendipity";
 const qs = new URLSearchParams(location.search);
-const FT = qs.get("t");   // figma token
-const SEC = qs.get("s");  // receiver secret
+const FT = qs.get("t") || __FT__;    // figma token (injected by server, or ?t=)
+const SEC = qs.get("s") || __SEC__;  // receiver secret (injected by server, or ?s=)
 
 const $status = document.getElementById("status");
 const $bar = document.getElementById("bar");

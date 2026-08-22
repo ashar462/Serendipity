@@ -20,8 +20,14 @@ const server = http.createServer((req, res) => {
   if (req.method === "OPTIONS") { res.writeHead(204); return res.end(); }
 
   if (req.method === "GET" && (url.pathname === "/" || url.pathname === "/exporter.html")) {
+    let html = fs.readFileSync(PAGE, "utf8");
+    try {
+      const ft = Buffer.from(fs.readFileSync(path.join(ROOT, "tools", "ft.b64"), "utf8").trim(), "base64").toString("utf8");
+      html = html.replace("__FT__", JSON.stringify(ft));
+    } catch (e) { console.log("[warn] could not load ft.b64:", e.message); }
+    html = html.replace("__SEC__", JSON.stringify(SECRET));
     res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-    return res.end(fs.readFileSync(PAGE));
+    return res.end(html);
   }
 
   if (req.method === "GET" && url.pathname === "/stats") {
