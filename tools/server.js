@@ -30,6 +30,28 @@ const server = http.createServer((req, res) => {
     return res.end(html);
   }
 
+  if (req.method === "GET" && url.pathname === "/manifest.json") {
+    const p = path.join(ROOT, "figma-export", "manifest.json");
+    if (!fs.existsSync(p)) { res.writeHead(404); return res.end("no manifest"); }
+    res.writeHead(200, { "Content-Type": "application/json" });
+    return res.end(fs.readFileSync(p));
+  }
+
+  if (req.method === "GET" && url.pathname === "/have") {
+    const dir = path.join(ROOT, "figma-export", "renders");
+    const out = [];
+    if (fs.existsSync(dir)) {
+      (function walkDir(d) {
+        for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+          if (e.isDirectory()) walkDir(path.join(d, e.name));
+          else out.push("renders/" + path.relative(dir, path.join(d, e.name)).split(path.sep).join("/"));
+        }
+      })(dir);
+    }
+    res.writeHead(200, { "Content-Type": "application/json" });
+    return res.end(JSON.stringify(out));
+  }
+
   if (req.method === "GET" && url.pathname === "/stats") {
     res.writeHead(200, { "Content-Type": "application/json" });
     return res.end(JSON.stringify(received));

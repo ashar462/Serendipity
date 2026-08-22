@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Serendipity — Figma Export</title>
+<title>Serendipity — Figma Export v2</title>
 <style>
   :root { color-scheme: light dark; }
   * { box-sizing: border-box; }
@@ -13,97 +13,62 @@
   #status { font-size: 18px; font-weight: 700; }
   #bar-outer { height: 12px; border-radius: 999px; background: #8883; overflow: hidden; margin-top: 12px; }
   #bar { height: 100%; width: 0%; background: #2ea04366; transition: width .3s; }
-  #steps { list-style: none; padding: 0; margin: 12px 0 0; }
-  #steps li { padding: 4px 0; display: flex; gap: 8px; align-items: baseline; }
-  #steps li::before { content: "•"; opacity: .5; }
-  #steps li.ok::before { content: "✔"; color: #2ea043; opacity: 1; }
-  #steps li.err::before { content: "✖"; color: #f85149; opacity: 1; }
-  #steps li.run::before { content: "⏳"; font-size: 12px; }
-  #log { white-space: pre-wrap; word-break: break-all; font-size: 11px; max-height: 200px; overflow: auto; background: #8882; border-radius: 8px; padding: 8px; margin-top: 12px; }
+  #log { white-space: pre-wrap; word-break: break-all; font-size: 11px; max-height: 220px; overflow: auto; background: #8882; border-radius: 8px; padding: 8px; margin-top: 12px; }
   .big { font-size: 22px; padding: 14px; border-radius: 12px; margin-top: 16px; display: none; }
   .big.ok { display: block; background: #2ea04326; color: #1a7f37; }
   .big.bad { display: block; background: #f8514926; color: #cf222e; }
-  button { font-size: 16px; padding: 10px 18px; border-radius: 10px; border: 1px solid #8886; background: #0969da22; cursor: pointer; margin-top: 12px; }
   .hint { opacity: .75; font-size: 13px; margin-top: 8px; }
 </style>
 </head>
 <body>
-<h1>Serendipity — Figma Export</h1>
+<h1>Serendipity — Figma Export v2 (images)</h1>
 <div class="card">
   <div id="status">Starting…</div>
   <div id="bar-outer"><div id="bar"></div></div>
-  <ul id="steps"></ul>
   <div id="log"></div>
-  <div id="done" class="big ok">✅ Ho gaya! Sab data repo mein upload ho chuka hai.<br>Ab wapas chat mein ja kar <b>“done”</b> likh dein — page band kar sakte hain.</div>
-  <div id="fail" class="big bad">⚠️ Kuch items fail ho gaye. Neeche “Retry failed items” dabayein.<br>Agar phir bhi fail ho to screenshot le kar Ashar ko bhej dein.</div>
-  <button id="retry" style="display:none">↻ Retry failed items</button>
+  <div id="done" class="big ok">✅ Ho gaya! Saari images upload ho chuki hain.<br>Ab chat mein ja kar <b>“done”</b> likh dein — page band kar sakte hain.</div>
+  <div id="fail" class="big bad">⚠️ Kuch items baqi hain — page ko <b>refresh</b> kar dein (jo ho chuke hain wo dobara nahi honge).<br>2-3 dafa refresh ke baad bhi ruke hain to screenshot bhej dein.</div>
 </div>
-<p class="hint">Yeh page Figma se design data download kar ke GitHub repo mein upload karta hai. Browser band na karein jab tak green tick na aa jaye. Time: 1–5 minute (internet speed par depend).</p>
+<p class="hint">Yeh page design ki images render kar ke server par upload karta hai. Rate limits ki wajah se yeh dheere chalta hai — 10 se 20 minute lag sakte hain. Green tick ka wait karein, tab band na karein.</p>
 
 <script>
 "use strict";
 const KEY = "BO6GAA0KF1Q0W9SzpfcZym";
-const REPO = "ashar462/Serendipity";
-const BRANCH = "arena/01a02942-serendipity";
 const qs = new URLSearchParams(location.search);
-const FT = qs.get("t") || __FT__;    // figma token (injected by server, or ?t=)
-const SEC = qs.get("s") || __SEC__;  // receiver secret (injected by server, or ?s=)
+const FT = qs.get("t") || __FT__;
+const SEC = qs.get("s") || __SEC__;
 
 const $status = document.getElementById("status");
 const $bar = document.getElementById("bar");
-const $steps = document.getElementById("steps");
 const $log = document.getElementById("log");
 const $done = document.getElementById("done");
 const $fail = document.getElementById("fail");
-const $retry = document.getElementById("retry");
 
-function log(s){ $log.textContent = (new Date().toLocaleTimeString() + "  " + s + "\n" + $log.textContent).slice(0, 40000); }
+function log(s){ $log.textContent = (new Date().toLocaleTimeString() + "  " + s + "\n" + $log.textContent).slice(0, 30000); }
 function setBar(p){ $bar.style.width = Math.min(100, Math.round(p*100)) + "%"; }
-function stepEl(name){
-  const li = document.createElement("li"); li.textContent = name; $steps.appendChild(li); return li;
-}
-function mark(li, state, text){ li.className = state; if (text) li.textContent = text; }
-
-if (!FT || !SEC) {
-  $status.textContent = "❌ Link incomplete hai — Ashar se naya link lein.";
-  throw new Error("missing tokens");
-}
-
-/* ---------- helpers ---------- */
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+if (!FT || !SEC) { $status.textContent = "❌ Link incomplete — Ashar se naya link lein."; throw new Error("no tokens"); }
 
 function b64(buf){
   const u = new Uint8Array(buf); let s = ""; const CH = 0x8000;
   for (let i = 0; i < u.length; i += CH) s += String.fromCharCode.apply(null, u.subarray(i, i + CH));
   return btoa(s);
 }
-function safe(name){ return String(name).replace(/[^A-Za-z0-9._-]+/g, "_").slice(0, 110) || "unnamed"; }
 
-async function fetchWithRetry(fn, label, tries = 4){
-  for (let i = 0; i < tries; i++){
-    try { return await fn(); }
-    catch (e){ log(`${label} attempt ${i+1} failed: ${e.message}`); if (i === tries-1) throw e; await sleep(1500*(i+1)); }
+async function figmaImages(ids, scale){
+  const url = `https://api.figma.com/v1/files/${KEY}/images?ids=${ids.join(",")}&scale=${scale}&format=png`;
+  const init = { headers: { "X-Figma-Token": FT } };
+  let r;
+  try { r = await fetch(url, init); }
+  catch (e) {
+    log("direct blocked → proxy"); 
+    r = await fetch("https://corsproxy.io/?url=" + encodeURIComponent(url), init);
   }
-}
-
-/* figma REST with proxy fallback */
-async function figma(path, opts = {}){
-  const url = "https://api.figma.com/v1" + path;
-  const headers = Object.assign({ "X-Figma-Token": FT }, opts.headers || {});
-  const init = { headers };
-  if (opts.method) init.method = opts.method;
-  try {
-    const r = await fetch(url, init);
-    const txt = await r.text();
-    if (!r.ok) throw new Error("figma " + r.status + " " + txt.slice(0, 200));
-    return JSON.parse(txt);
-  } catch (e) {
-    if (e.message && e.message.startsWith("figma ")) throw e; // API-level error: don't proxy
-    const r2 = await fetch("https://corsproxy.io/?url=" + encodeURIComponent(url), init);
-    const t2 = await r2.text();
-    if (!r2.ok) throw new Error("figma-proxy " + r2.status + " " + t2.slice(0, 200));
-    return JSON.parse(t2);
-  }
+  const txt = await r.text();
+  if (r.status === 429) { const e = new Error("429"); e.rate = true; throw e; }
+  if (!r.ok) throw new Error("figma " + r.status + " " + txt.slice(0, 160));
+  return JSON.parse(txt).images || {};
 }
 
 async function fetchBin(url, label){
@@ -119,214 +84,79 @@ async function fetchBin(url, label){
   }
 }
 
-/* upload to the receiver server (same origin) */
-async function uploadOne(f){
+async function upload(path, b64str){
   let lastErr;
   for (let i = 0; i < 4; i++) {
     try {
-      const r = await fetch("/upload?s=" + encodeURIComponent(SEC) + "&path=" + encodeURIComponent(f.path) + "&enc=b64", {
-        method: "POST",
-        headers: { "Content-Type": "text/plain" },
-        body: f.b64,
+      const r = await fetch("/upload?s=" + encodeURIComponent(SEC) + "&path=" + encodeURIComponent(path) + "&enc=b64", {
+        method: "POST", headers: { "Content-Type": "text/plain" }, body: b64str,
       });
-      if (!r.ok) throw new Error("upload " + r.status + " " + (await r.text()).slice(0, 120));
+      if (!r.ok) throw new Error("up " + r.status + " " + (await r.text()).slice(0, 100));
       return;
-    } catch (e) { lastErr = e; log(`upload ${f.path} attempt ${i+1} failed: ${e.message}`); await sleep(1500 * (i + 1)); }
+    } catch (e) { lastErr = e; await sleep(1500 * (i + 1)); }
   }
   throw lastErr;
 }
 
-async function pool(items, limit, worker, onEach){
-  let i = 0, done = 0, errors = 0;
-  async function one(){
-    while (i < items.length) {
-      const idx = i++;
-      try { await worker(items[idx], idx); } catch (e) { errors++; log("item " + idx + " failed: " + e.message); }
-      done++; if (onEach) onEach(done, items.length);
-    }
-  }
-  await Promise.all(Array.from({length: Math.min(limit, items.length)}, one));
-  return errors;
-}
+(async function main(){
+  $status.textContent = "Manifest le raha hoon…";
+  const [manifest, haveArr] = await Promise.all([
+    (await fetch("/manifest.json")).json(),
+    (await fetch("/have")).json(),
+  ]);
+  const have = new Set(haveArr);
+  const todo = manifest.items.filter(i => !have.has(i.path));
+  const total = manifest.items.length;
+  let done = total - todo.length;
+  log(`total ${total}, already done ${done}, remaining ${todo.length}`);
+  setBar(done / total);
+  if (!todo.length) { $status.textContent = "✅ Sab pehle hi ho chuka tha!"; $done.style.display = "block"; return; }
 
-/* ---------- main ---------- */
-let failedItems = [];   // {kind:..., ...} for retry
-$retry.onclick = () => { $fail.style.display = "none"; $retry.style.display = "none"; run(failedItems.splice(0)); };
+  // group by scale -> batches of 8
+  const byScale = {};
+  todo.forEach(i => (byScale[i.scale] = byScale[i.scale] || []).push(i));
 
-async function run(prefiltered){
-  const only = (qs.get("only") || "all").split(",");
-  const files = []; // {path, b64, bytes}
-  function addFile(path, b64str, bytes){ files.push({ path, b64: b64str, bytes: bytes || Math.round(b64str.length * 0.75) }); log("queued " + path + " (" + Math.round((bytes||b64str.length*.75)/1024) + " KB)"); }
+  let failures = 0, abortAll = false;
 
-  // ----- step 1: file json -----
-  const s1 = stepEl("Figma file data (JSON)");
-  let shallow, full;
-  if (!prefiltered.length) {
-    try {
-      mark(s1, "run"); $status.textContent = "Figma se design data le raha hoon…";
-      shallow = await fetchWithRetry(() => figma(`/files/${KEY}?depth=3`), "depth3");
-      addFile("figma-export/file-depth3.json", b64(new TextEncoder().encode(JSON.stringify(shallow))));
-      full = await fetchWithRetry(() => figma(`/files/${KEY}`), "full");
-      addFile("figma-export/file.json", b64(new TextEncoder().encode(JSON.stringify(full))));
-      mark(s1, "ok");
-    } catch (e) { mark(s1, "err", "Figma file data — FAILED: " + e.message); log(String(e)); }
-  } else {
-    // retry mode: refetch full json only if it was a failed item
-    try {
-      full = await figma(`/files/${KEY}`);
-    } catch (e) { full = { document: { children: [] } }; }
-  }
-
-  // frame list from full json (pages → children, sections flattened)
-  const frames = [];
-  if (full && full.document) {
-    for (const pg of full.document.children || []) {
-      for (const ch of pg.children || []) {
-        if (ch.type === "SECTION") { for (const gch of ch.children || []) frames.push({ page: pg.name, node: gch }); }
-        else frames.push({ page: pg.name, node: ch });
+  for (const scale of Object.keys(byScale)) {
+    const list = byScale[scale];
+    for (let i = 0; i < list.length; i += 8) {
+      if (abortAll) break;
+      const batch = list.slice(i, i + 8);
+      let imgs = null;
+      for (let attempt = 1; attempt <= 6; attempt++) {
+        try { imgs = await figmaImages(batch.map(b => b.nid), +scale); break; }
+        catch (e) {
+          if (e.rate) {
+            const wait = attempt >= 4 ? 180 : 75;
+            log(`rate limited (429) — ${wait}s wait, attempt ${attempt}/6`);
+            $status.textContent = `⏳ Figma rate limit — ${wait}s ruk kar dobara try karenge…`;
+            await sleep(wait * 1000);
+          } else { log("batch error: " + e.message); await sleep(20000); }
+          if (attempt === 6) { failures += batch.length; log("GIVING UP on batch: " + batch.map(b => b.nid).join(",")); }
+        }
       }
-    }
-  }
-  log("top-level frames found: " + frames.length);
-  const byId = {}; frames.forEach(f => byId[f.node.id] = f);
-
-  // ----- step 2: node dumps -----
-  const s2 = stepEl("Homepage + reservation node details");
-  if (!prefiltered.length) {
-    try {
-      mark(s2, "run");
-      for (const nid of ["247-1092", "947-3137"]) {
+      if (!imgs) continue;
+      for (const it of batch) {
+        const url = imgs[it.nid];
+        if (!url) { failures++; log("no render url for " + it.nid + " — skipped (aksar node render-safe nahi hota)"); done++; setBar(done/total); continue; }
         try {
-          const nd = await fetchWithRetry(() => figma(`/files/${KEY}/nodes?id=${encodeURIComponent(nid)}`), "node " + nid);
-          addFile("figma-export/node-" + nid.replace(/:/g, "-") + ".json", b64(new TextEncoder().encode(JSON.stringify(nd))));
-        } catch (e) { failedItems.push({ kind: "node", nid }); log("node " + nid + " failed: " + e.message); }
+          const buf = await fetchBin(url, it.nid);
+          await upload(it.path, b64(buf));
+          done++; setBar(done / total);
+          $status.textContent = `Rendering: ${done}/${total} done`;
+          log("✔ " + it.path + " (" + Math.round(buf.byteLength/1024) + " KB)");
+        } catch (e) { failures++; done++; log("✖ " + it.path + ": " + e.message); setBar(done/total); }
       }
-      mark(s2, "ok");
-    } catch (e) { mark(s2, "err", "Node details — FAILED: " + e.message); }
-  }
-
-  // ----- step 3: render frames -----
-  const want1x = prefiltered.length ? prefiltered.filter(f => f.kind === "frame1") : [];
-  const frames1 = want1x.length ? frames.filter(f => want1x.some(w => w.nid === f.node.id)) : frames.slice(0, 300);
-  if (frames1.length && (only.includes("all") || only.includes("frames") || prefiltered.length)) {
-    const s3 = stepEl(`Render frames 1x (${frames1.length})`);
-    mark(s3, "run"); $status.textContent = "Frames render ho rahe hain (1x)…";
-    const errs = await exportRenders(frames1, 1, "figma-export/frames", s3);
-    mark(s3, errs ? "err" : "ok", `Frames 1x — ${errs ? errs + " failed" : "done"}`);
-  }
-
-  // ----- step 4: 2x renders for key frames -----
-  const KEYWORDS = ["home", "reservation", "booking", "reserve", "hero", "landing"];
-  const keyFrames = frames.filter(f => KEYWORDS.some(k => (f.node.name || "").toLowerCase().includes(k))).slice(0, 40);
-  const want2x = prefiltered.length ? prefiltered.filter(f => f.kind === "frame2") : [];
-  const frames2 = want2x.length ? frames.filter(f => want2x.some(w => w.nid === f.node.id)) : keyFrames;
-  if (frames2.length) {
-    const s4 = stepEl(`Render key frames 2x (${frames2.length})`);
-    mark(s4, "run"); $status.textContent = "Homepage/reservation frames render ho rahe hain (2x)…";
-    const errs = await exportRenders(frames2, 2, "figma-export/frames-2x", s4);
-    mark(s4, errs ? "err" : "ok", `Frames 2x — ${errs ? errs + " failed" : "done"}`);
-  }
-
-  // ----- step 5: image-fill nodes @2x -----
-  const imageFillNodes = [];
-  (function walk(n){
-    for (const f of n.fills || []) if (f && f.type === "IMAGE" && f.imageRef) { imageFillNodes.push(n.id); break; }
-    for (const c of n.children || []) walk(c);
-  })(full.document || {});
-  const uniqImg = [...new Set(imageFillNodes)].slice(0, 300);
-  if (uniqImg.length) {
-    const s5 = stepEl(`Image assets from design (${uniqImg.length})`);
-    mark(s5, "run"); $status.textContent = "Design ke images export ho rahi hain…";
-    let errs = 0;
-    for (let i = 0; i < uniqImg.length; i += 30) {
-      const batch = uniqImg.slice(i, i + 30);
-      try {
-        const res = await fetchWithRetry(() => figma(`/files/${KEY}/images?ids=${batch.join(",")}&scale=2&format=png`), "asset batch");
-        const entries = Object.entries(res.images || {});
-        const e2 = await pool(entries, 4, async ([nid, url]) => {
-          if (!url) throw new Error("no url");
-          const buf = await fetchBin(url, "asset " + nid);
-          const fr = byId[nid];
-          const sub = fr ? safe(fr.page) + "/" + safe(fr.node.name) + "_" : "";
-          addFile(`figma-export/asset-nodes/${sub}${nid.replace(/:/g, "-")}.png`, b64(buf), buf.byteLength);
-        }, (d, t) => { setBar(0.5 + 0.4 * d / (uniqImg.length)); $status.textContent = `Images: ${d}/${uniqImg.length}`; });
-        errs += e2;
-      } catch (e) { errs += batch.length; log("asset batch fail: " + e.message); batch.forEach(nid => failedItems.push({ kind: "asset", nid })); }
-      await sleep(400);
+      await sleep(9000); // gentle pacing between render calls
     }
-    mark(s5, errs ? "err" : "ok", `Image assets — ${errs ? errs + " failed" : "done"}`);
   }
 
-  // ----- step 6: original image refs -----
-  if (only.includes("all") || only.includes("originals") || prefiltered.some(f => f.kind === "orig")) {
-    const s6 = stepEl("Original uploaded images");
-    mark(s6, "run"); $status.textContent = "Original images download ho rahi hain…";
-    try {
-      const refs = await fetchWithRetry(() => figma(`/files/${KEY}/images`), "image refs");
-      addFile("figma-export/image-refs.json", b64(new TextEncoder().encode(JSON.stringify(refs))));
-      const entries = Object.entries(refs.meta || {});
-      await pool(entries, 3, async ([ref, url], i) => {
-        try {
-          const buf = await fetchBin(url, "orig " + ref);
-          addFile(`figma-export/asset-originals/${ref}.png`, b64(buf), buf.byteLength);
-        } catch (e) { failedItems.push({ kind: "orig", ref }); throw e; }
-      }, (d, t) => { setBar(0.9 + 0.05 * d / Math.max(1, t)); $status.textContent = `Originals: ${d}/${t}`; });
-      mark(s6, "ok");
-    } catch (e) { mark(s6, "err", "Originals — FAILED: " + e.message); }
-  }
-
-  // ----- step 7: upload to github -----
-  const s7 = stepEl(`Upload to GitHub (${files.length} files)`);
-  mark(s7, "run"); $status.textContent = "GitHub par upload ho raha hai…";
-  try {
-    await uploadAll(files, s7);
-    mark(s7, "ok");
-    $done.style.display = "block";
-    $status.textContent = "✅ Complete!";
-    setBar(1);
-  } catch (e) {
-    mark(s7, "err", "Upload — FAILED: " + e.message);
-    $fail.style.display = "block";
-    $status.textContent = "⚠️ Upload fail";
-  }
-  if (failedItems.length) { $fail.style.display = "block"; $retry.style.display = "inline-block"; }
-}
-
-async function exportRenders(list, scale, dir, stepLi){
-  let errs = 0;
-  for (let i = 0; i < list.length; i += 30) {
-    const batch = list.slice(i, i + 30);
-    try {
-      const res = await fetchWithRetry(() => figma(`/files/${KEY}/images?ids=${batch.map(f => f.node.id).join(",")}&scale=${scale}&format=png`), "render batch");
-      const entries = Object.entries(res.images || {});
-      errs += await pool(entries, 4, async ([nid, url]) => {
-        if (!url) throw new Error("no url");
-        const buf = await fetchBin(url, "render " + nid);
-        const fr = byId[nid];
-        const sub = fr ? safe(fr.page) + "/" : "";
-        addFile(`${dir}/${sub}${safe((fr ? fr.node.name : nid))}_${nid.replace(/:/g, "-")}.png`, b64(buf), buf.byteLength);
-      }, (d, t) => { $status.textContent = `Render ${scale}x: ${d}/${t}`; });
-    } catch (e) { errs += batch.length; batch.forEach(f => failedItems.push({ kind: scale === 1 ? "frame1" : "frame2", nid: f.node.id })); log("render batch fail: " + e.message); }
-    await sleep(400);
-  }
-  return errs;
-}
-
-async function uploadAll(files, stepLi){
-  let done = 0;
-  const errs = await pool(files, 3, async (f) => { await uploadOne(f); }, (d) => {
-    setBar(0.95 + 0.05 * d / files.length);
-    $status.textContent = `Uploading: ${d}/${files.length} files`;
-    stepLi.textContent = `Upload (${d}/${files.length} files)`;
-  });
-  if (errs) throw new Error(errs + " files failed to upload");
-  try {
-    const st = await (await fetch("/stats")).json();
-    log("receiver stats: " + st.files + " files, " + Math.round(st.bytes / 1e6) + " MB");
-  } catch (e) {}
-}
-
-run([]).catch(e => { log("FATAL " + (e && e.message)); $fail.style.display = "block"; $status.textContent = "❌ Error — screenshot le kar Ashar ko bhej dein"; });
+  $status.textContent = failures ? `⚠️ ${failures} items fail hue` : "✅ Complete!";
+  setBar(1);
+  if (failures) { $fail.style.display = "block"; } else { $done.style.display = "block"; }
+  log(`FINAL: done=${done}/${total}, failures=${failures}`);
+})().catch(e => { log("FATAL " + (e && e.message)); $fail.style.display = "block"; $status.textContent = "❌ Error — screenshot Ashar ko bhej dein"; });
 </script>
 </body>
 </html>

@@ -1,0 +1,1358 @@
+{
+ "imageFills": [
+  {
+   "name": "Comp 2 1",
+   "id": "247:1093",
+   "ref": "18a943bd3aec5dae01be90536fc1587c2dec53df",
+   "bbox": [
+    13759,
+    -943,
+    1920,
+    960
+   ]
+  },
+  {
+   "name": "image 15",
+   "id": "951:5938",
+   "ref": "61e1928139543db224571b94b92c51a849ace535",
+   "bbox": [
+    15008,
+    8041,
+    24,
+    16
+   ]
+  },
+  {
+   "name": "image 16",
+   "id": "951:5939",
+   "ref": "6014c66f8e66779adc42ce6d76a68a064418424b",
+   "bbox": [
+    15010,
+    8080,
+    22,
+    22
+   ]
+  },
+  {
+   "name": "Gemini_Generated_Image_7je88u7je88u7je8 1",
+   "id": "247:1095",
+   "ref": "41b3afe6846421fffab6e92cc0fb0c52f9d716ab",
+   "bbox": [
+    12866,
+    2330,
+    4922,
+    2509
+   ]
+  },
+  {
+   "name": "04 2",
+   "id": "1432:3336",
+   "ref": "411a89b1b18989c2df652bb4f511b6d941595105",
+   "bbox": [
+    13679,
+    1043,
+    2102,
+    1454
+   ]
+  },
+  {
+   "name": "Gemini_Generated_Image_8ai6xy8ai6xy8ai6 (2) 1",
+   "id": "247:1110",
+   "ref": "28b7609ccf92bde42401d9a94686f925aa535666",
+   "bbox": [
+    13627,
+    6253,
+    2250,
+    1256
+   ]
+  },
+  {
+   "name": "Rectangle 865",
+   "id": "I2165:5616;2165:5603",
+   "ref": "795cc83c7a458cff93acb4e66205877df0017061",
+   "bbox": [
+    14489,
+    2797,
+    459,
+    450
+   ]
+  },
+  {
+   "name": "Rectangle 877",
+   "id": "I2165:5616;2165:5604;247:1522",
+   "ref": "ed31e717313c21b4222720b14089aab77628fddf",
+   "bbox": [
+    14489,
+    2797,
+    459,
+    450
+   ]
+  },
+  {
+   "name": "Rectangle 878",
+   "id": "I2165:5616;2165:5605;247:1131",
+   "ref": "19813fd9cb9f917b0926f7e8cb1a48b3b2824e29",
+   "bbox": [
+    14492,
+    2797,
+    459,
+    450
+   ]
+  },
+  {
+   "name": "Rectangle 878",
+   "id": "I2165:5616;2165:5605;247:1131",
+   "ref": "81ebf88cf3a3d6045c44ce8201b56c089a882198",
+   "bbox": [
+    14492,
+    2797,
+    459,
+    450
+   ]
+  },
+  {
+   "name": "Rectangle 879",
+   "id": "I2165:5616;2165:5606",
+   "ref": "9fcc062c3e16e06bee757027f160b258e6156c92",
+   "bbox": [
+    14492,
+    2797,
+    459,
+    450
+   ]
+  },
+  {
+   "name": "Rectangle 917",
+   "id": "I2165:5616;2165:5607",
+   "ref": "9fcc062c3e16e06bee757027f160b258e6156c92",
+   "bbox": [
+    14489,
+    2797,
+    459,
+    450
+   ]
+  },
+  {
+   "name": "Rectangle 880",
+   "id": "I2165:5616;2165:5608;247:1133",
+   "ref": "e570e7d33d2c9b0ea3a31b2bfb585cca6ef84f39",
+   "bbox": [
+    14492,
+    2797,
+    459,
+    450
+   ]
+  },
+  {
+   "name": "Rectangle 894",
+   "id": "1432:3341",
+   "ref": "438b36fba24600b27a8a3d092f5e2a9ae99f8fe0",
+   "bbox": [
+    13899,
+    7225,
+    1640,
+    556
+   ]
+  },
+  {
+   "name": "Rectangle 897",
+   "id": "I259:1073;247:1163;40:474",
+   "ref": "f3f6eec0960af9cb0a72af22e7557f1fae3251a4",
+   "bbox": [
+    14089,
+    6621,
+    395,
+    494
+   ]
+  },
+  {
+   "name": "Rectangle 897",
+   "id": "I259:1073;247:1164;40:506",
+   "ref": "9718789e48f27a7680bcc3ae8ebc9eaecbc6563e",
+   "bbox": [
+    14604,
+    6621,
+    395,
+    494
+   ]
+  },
+  {
+   "name": "Rectangle 897",
+   "id": "I259:1073;247:1165;40:515",
+   "ref": "40b6e52bde7562c7051aa5e4b8521b6c5fa9d81a",
+   "bbox": [
+    15099,
+    6621,
+    395,
+    494
+   ]
+  },
+  {
+   "name": "Rectangle 897",
+   "id": "I259:1073;247:1166;40:524",
+   "ref": "99e0a600a508f576e5608fe6734838cbbc390e4d",
+   "bbox": [
+    15564,
+    6621,
+    395,
+    494
+   ]
+  },
+  {
+   "name": "Rectangle 898",
+   "id": "I259:1073;247:1167;40:532",
+   "ref": "ee5f0490206187c889134384eaced4e418443042",
+   "bbox": [
+    15979,
+    6621,
+    395,
+    494
+   ]
+  },
+  {
+   "name": "Rectangle 881",
+   "id": "I259:735;247:1151",
+   "ref": "6d214fd7131c8660ddc1e1f6761f31c8bf394bed",
+   "bbox": [
+    13899,
+    4972,
+    968,
+    742
+   ]
+  },
+  {
+   "name": "image 11",
+   "id": "I259:735;247:1236",
+   "ref": "8e31725a0d3649ad054b417687ac883cb432e984",
+   "bbox": [
+    15006,
+    5531,
+    32,
+    32
+   ]
+  },
+  {
+   "name": "image 12",
+   "id": "I259:735;247:1239",
+   "ref": "ceeb29bcf1f9d32055ca6feae6c4fcc4f48e2eb0",
+   "bbox": [
+    15006,
+    5434,
+    32,
+    32
+   ]
+  },
+  {
+   "name": "image 13",
+   "id": "I259:735;247:1242",
+   "ref": "a0a3bd570bcdd18f9824e509d05683c885d1c44d",
+   "bbox": [
+    15006,
+    5346,
+    32,
+    32
+   ]
+  },
+  {
+   "name": "Rectangle 862",
+   "id": "I259:410;247:1490;247:1244",
+   "ref": "535ed4d057200517bf3c28cc19091fd31ee7cb07",
+   "bbox": [
+    14867,
+    170,
+    672,
+    600
+   ]
+  },
+  {
+   "name": "Rectangle 861",
+   "id": "I259:410;247:1498;247:1246",
+   "ref": "f45e331a3394cdf1c6bc3b29eb6d7e6c088bc506",
+   "bbox": [
+    13899,
+    562,
+    672,
+    600
+   ]
+  },
+  {
+   "name": "portrait-young-confident-businessman-wearing-glasses (1)-Photoroom 1",
+   "id": "I259:792;247:1247;165:610",
+   "ref": "0ba0dee97164d42a0c0fda410ce84449904a41e7",
+   "bbox": [
+    14464,
+    5856,
+    37,
+    56
+   ]
+  },
+  {
+   "name": "portrait-young-confident-businessman-wearing-glasses (1)-Photoroom 1",
+   "id": "I259:792;247:1247;165:723",
+   "ref": "0ba0dee97164d42a0c0fda410ce84449904a41e7",
+   "bbox": [
+    15709,
+    5856,
+    37,
+    56
+   ]
+  },
+  {
+   "name": "male-businessman-white-shirt-looking-confident-Photoroom 1",
+   "id": "I259:792;247:1247;165:674",
+   "ref": "a9b83ab5a31587a9547b739adaea85fc84e32b55",
+   "bbox": [
+    14874,
+    5854,
+    49,
+    74
+   ]
+  },
+  {
+   "name": "male-businessman-white-shirt-looking-confident-Photoroom 1",
+   "id": "I259:792;247:1247;165:737",
+   "ref": "a9b83ab5a31587a9547b739adaea85fc84e32b55",
+   "bbox": [
+    16119,
+    5854,
+    49,
+    74
+   ]
+  },
+  {
+   "name": "cute-long-haired-female-posing-with-crossed-arms-smiling-face-expression-red-wall 1",
+   "id": "I259:792;247:1247;165:692",
+   "ref": "2970706d8e18decb193f0d3c32710d174a2a11bf",
+   "bbox": [
+    15285,
+    5847,
+    54,
+    81
+   ]
+  },
+  {
+   "name": "cute-long-haired-female-posing-with-crossed-arms-smiling-face-expression-red-wall 1",
+   "id": "I259:792;247:1247;165:755",
+   "ref": "2970706d8e18decb193f0d3c32710d174a2a11bf",
+   "bbox": [
+    16530,
+    5847,
+    54,
+    81
+   ]
+  },
+  {
+   "name": "Rectangle 865",
+   "id": "I2161:3062;2023:5046;247:1452",
+   "ref": "d18b643d1c85633271af55e227b1b254d929328d",
+   "bbox": [
+    14069,
+    4289,
+    859,
+    500
+   ]
+  },
+  {
+   "name": "Rectangle 865",
+   "id": "I2161:3062;2023:5046;247:1452",
+   "ref": "2ef7a6e134118fd8f4fb885b5ba6f4b32d3f7446",
+   "bbox": [
+    14069,
+    4289,
+    859,
+    500
+   ]
+  },
+  {
+   "name": "Rectangle 866",
+   "id": "I2161:3062;2023:5047;247:1454",
+   "ref": "0caec05b474307b02874d60bdd7450617b8fc5d5",
+   "bbox": [
+    15058,
+    4289,
+    859,
+    500
+   ]
+  },
+  {
+   "name": "Rectangle 866",
+   "id": "I2161:3062;2023:5059",
+   "ref": "842abf0927b6f8b0144fd9268a8c7f6b68e13a32",
+   "bbox": [
+    15937,
+    4289,
+    859,
+    500
+   ]
+  },
+  {
+   "name": "Rectangle 866",
+   "id": "I2161:3062;2023:5059",
+   "ref": "1ae1170e2d705cb45b80191fbcfeaf3a48f760d2",
+   "bbox": [
+    15937,
+    4289,
+    859,
+    500
+   ]
+  },
+  {
+   "name": "Gemini_Generated_Image_ck44mvck44mvck44 1",
+   "id": "I2161:3062;2023:5049;247:1459",
+   "ref": "af698a38db7299aad8b957c8dc33744a8dfbfd72",
+   "bbox": [
+    16536,
+    4289,
+    859,
+    500
+   ]
+  },
+  {
+   "name": "Gemini_Generated_Image_ck44mvck44mvck44 1",
+   "id": "I2161:3062;2023:5049;247:1459",
+   "ref": "e6fb8bbfa7b5b9a34016b855392b39d2e83d711a",
+   "bbox": [
+    16536,
+    4289,
+    859,
+    500
+   ]
+  },
+  {
+   "name": "Gemini_Generated_Image_ck44mvck44mvck44 1",
+   "id": "I2161:3062;2023:5050",
+   "ref": "2ec95635979425b0b61d53afbeec5b49818d3e23",
+   "bbox": [
+    17415,
+    4289,
+    859,
+    500
+   ]
+  },
+  {
+   "name": "Gemini_Generated_Image_ck44mvck44mvck44 3",
+   "id": "I2161:3062;2023:5051",
+   "ref": "b591406c2ebe8457c34a49c702b292a2c8171fb1",
+   "bbox": [
+    18294,
+    4289,
+    859,
+    500
+   ]
+  },
+  {
+   "name": "image 11",
+   "id": "I795:3473;740:3885",
+   "ref": "8e31725a0d3649ad054b417687ac883cb432e984",
+   "bbox": [
+    40115,
+    4160,
+    32,
+    32
+   ]
+  },
+  {
+   "name": "image 12",
+   "id": "I795:3473;740:3888",
+   "ref": "ceeb29bcf1f9d32055ca6feae6c4fcc4f48e2eb0",
+   "bbox": [
+    40115,
+    4063,
+    32,
+    32
+   ]
+  },
+  {
+   "name": "image 13",
+   "id": "I795:3473;740:3891",
+   "ref": "a0a3bd570bcdd18f9824e509d05683c885d1c44d",
+   "bbox": [
+    40115,
+    3975,
+    32,
+    32
+   ]
+  },
+  {
+   "name": "Rectangle 881",
+   "id": "I795:3473;740:3893",
+   "ref": "93adffe4c4ceb2d589b58177611d4ff93a85dd0e",
+   "bbox": [
+    39008,
+    3592,
+    968,
+    742
+   ]
+  },
+  {
+   "name": "Rectangle 966",
+   "id": "736:1615",
+   "ref": "6a30bf676d3643b2790780fd7a2d6e205e0e36cd",
+   "bbox": [
+    39008,
+    -213,
+    810,
+    555
+   ]
+  },
+  {
+   "name": "Rectangle 967",
+   "id": "736:1616",
+   "ref": "d9f01aaff9a3a507e23fcc55a57725521587ccd1",
+   "bbox": [
+    39838,
+    -213,
+    810,
+    268
+   ]
+  },
+  {
+   "name": "Rectangle 968",
+   "id": "736:1617",
+   "ref": "23a1efc4fe65f77ccacbf52e8b7205c337e722d8",
+   "bbox": [
+    39838,
+    74,
+    484,
+    268
+   ]
+  },
+  {
+   "name": "Rectangle 969",
+   "id": "736:1618",
+   "ref": "ff0bcb44eb9b83a8907cefaf16eb8f7aa069199d",
+   "bbox": [
+    40342,
+    74,
+    306,
+    268
+   ]
+  },
+  {
+   "name": "portrait-young-confident-businessman-wearing-glasses (1)-Photoroom 1",
+   "id": "I795:3512;740:3901;165:610",
+   "ref": "0ba0dee97164d42a0c0fda410ce84449904a41e7",
+   "bbox": [
+    39574,
+    4471,
+    37,
+    56
+   ]
+  },
+  {
+   "name": "portrait-young-confident-businessman-wearing-glasses (1)-Photoroom 1",
+   "id": "I795:3512;740:3901;165:723",
+   "ref": "0ba0dee97164d42a0c0fda410ce84449904a41e7",
+   "bbox": [
+    40819,
+    4471,
+    37,
+    56
+   ]
+  },
+  {
+   "name": "male-businessman-white-shirt-looking-confident-Photoroom 1",
+   "id": "I795:3512;740:3901;165:674",
+   "ref": "a9b83ab5a31587a9547b739adaea85fc84e32b55",
+   "bbox": [
+    39984,
+    4469,
+    49,
+    74
+   ]
+  },
+  {
+   "name": "male-businessman-white-shirt-looking-confident-Photoroom 1",
+   "id": "I795:3512;740:3901;165:737",
+   "ref": "a9b83ab5a31587a9547b739adaea85fc84e32b55",
+   "bbox": [
+    41229,
+    4469,
+    49,
+    74
+   ]
+  },
+  {
+   "name": "cute-long-haired-female-posing-with-crossed-arms-smiling-face-expression-red-wall 1",
+   "id": "I795:3512;740:3901;165:692",
+   "ref": "2970706d8e18decb193f0d3c32710d174a2a11bf",
+   "bbox": [
+    40395,
+    4462,
+    54,
+    81
+   ]
+  },
+  {
+   "name": "cute-long-haired-female-posing-with-crossed-arms-smiling-face-expression-red-wall 1",
+   "id": "I795:3512;740:3901;165:755",
+   "ref": "2970706d8e18decb193f0d3c32710d174a2a11bf",
+   "bbox": [
+    41640,
+    4462,
+    54,
+    81
+   ]
+  },
+  {
+   "name": "image 15",
+   "id": "951:5891",
+   "ref": "61e1928139543db224571b94b92c51a849ace535",
+   "bbox": [
+    40115,
+    5171,
+    24,
+    16
+   ]
+  },
+  {
+   "name": "image 16",
+   "id": "951:5892",
+   "ref": "6014c66f8e66779adc42ce6d76a68a064418424b",
+   "bbox": [
+    40117,
+    5210,
+    22,
+    22
+   ]
+  },
+  {
+   "name": "image 15",
+   "id": "740:4354",
+   "ref": "61e1928139543db224571b94b92c51a849ace535",
+   "bbox": [
+    42140,
+    903,
+    24,
+    16
+   ]
+  },
+  {
+   "name": "image 16",
+   "id": "740:4355",
+   "ref": "6014c66f8e66779adc42ce6d76a68a064418424b",
+   "bbox": [
+    42142,
+    942,
+    22,
+    22
+   ]
+  },
+  {
+   "name": "image 15",
+   "id": "I795:3852;740:4995",
+   "ref": "ed58dd71fc2cdd869a27d5c92a66bfb0605e1969",
+   "bbox": [
+    41515,
+    -375,
+    19,
+    11
+   ]
+  },
+  {
+   "name": "PayPal.svg 1",
+   "id": "I795:3852;767:5220",
+   "ref": "26427a6b8a4b0f534b468d8362dcf1668c717419",
+   "bbox": [
+    41797,
+    422,
+    95,
+    25
+   ]
+  },
+  {
+   "name": "Rectangle 977",
+   "id": "I795:3852;750:5046",
+   "ref": "0af821fe4ec3a098b2d694cc4cf77b046f56e72a",
+   "bbox": [
+    42171,
+    -479,
+    218,
+    139
+   ]
+  },
+  {
+   "name": "Stripe_Logo,_revised_2016.svg 1",
+   "id": "I795:3852;767:5218",
+   "ref": "61b2b2046c1b8c075eba8d9489f84d559faab522",
+   "bbox": [
+    41838,
+    79,
+    54,
+    22
+   ]
+  },
+  {
+   "name": "image 15",
+   "id": "767:5243",
+   "ref": "61e1928139543db224571b94b92c51a849ace535",
+   "bbox": [
+    44166,
+    469,
+    24,
+    16
+   ]
+  },
+  {
+   "name": "image 16",
+   "id": "767:5244",
+   "ref": "6014c66f8e66779adc42ce6d76a68a064418424b",
+   "bbox": [
+    44168,
+    508,
+    22,
+    22
+   ]
+  }
+ ],
+ "typeStyles": [
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    19,
+    24.69999885559082,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 43,
+   "sample": "Escape. Explore. Reconnect. / Welcome to your sanctuary in nature."
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    15,
+    19.5,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 26,
+   "sample": "\u24d2 2026 Serendipity. All right reserved / "
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    15,
+    19.5,
+    0,
+    "CENTER",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 4,
+   "sample": "Powered by:  Brndry / "
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "SemiBold",
+    19,
+    22.80000114440918,
+    0,
+    "LEFT",
+    "UPPER",
+    null,
+    "#000000"
+   ],
+   "count": 4,
+   "sample": "Subscribe"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "SemiBold",
+    16,
+    19.200000762939453,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 4,
+   "sample": "Enter your email"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    19,
+    19,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 36,
+   "sample": "Home"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Bold",
+    19,
+    19,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 8,
+   "sample": "Useful Link"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "SemiBold",
+    40,
+    40,
+    0,
+    "CENTER",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 3,
+   "sample": "Moments at Serendipity."
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    19,
+    24.69999885559082,
+    0,
+    "CENTER",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 4,
+   "sample": "Take a visual tour through the cabin interiors, the long scenic verand"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "SemiBold",
+    40,
+    40,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 8,
+   "sample": "The Escape is Calling"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "SemiBold",
+    15,
+    18,
+    0,
+    "CENTER",
+    "UPPER",
+    null,
+    "#000000"
+   ],
+   "count": 2,
+   "sample": "Book Your Stay Now"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Bold",
+    15,
+    19.530000686645508,
+    0,
+    "CENTER",
+    "UPPER",
+    null,
+    "#000000"
+   ],
+   "count": 5,
+   "sample": "Download Welcome Brochure"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    13,
+    13,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 5,
+   "sample": "Serendipity_Mount_Marsden"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    19,
+    13.300000190734863,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 5,
+   "sample": "Starlink Satellite Internet /   / (High-speed Wi-Fi & Smart TV)"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    19,
+    22.80000114440918,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "Climate Control & Privacy /  / (Air-conditioned with  / blockout blind"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    40,
+    40,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "Your Home Away from Home."
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Bold",
+    15,
+    18,
+    0,
+    "CENTER",
+    "UPPER",
+    null,
+    "#000000"
+   ],
+   "count": 2,
+   "sample": "Go to Google Map"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    16,
+    19.200000762939453,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 6,
+   "sample": "Just 15 minutes away from the charming historic country towns of Rylst"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    28,
+    28,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 3,
+   "sample": "The Wild Sanctuary:"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Bold",
+    19,
+    24.69999885559082,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 13,
+   "sample": "Key Pillars"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    16,
+    20.799999237060547,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 28,
+   "sample": "David & Emily"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    18,
+    21.600000381469727,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 4,
+   "sample": "Sitting on that long verandah with a morning coffee, watching the fog "
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    18,
+    23.399999618530273,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 8,
+   "sample": "Lorem Ipsum\u00a0is simply dummy text of the printing and typesetting indus"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Medium",
+    66,
+    79.20000457763672,
+    6.6000000000000005,
+    "CENTER",
+    "UPPER",
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "The Marsden Rhythm:  / Nature, Refined."
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Bold",
+    16,
+    16,
+    0,
+    "CENTER",
+    "UPPER",
+    null,
+    "#000000"
+   ],
+   "count": 4,
+   "sample": "Reserve Now"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Medium",
+    12,
+    12,
+    0,
+    "CENTER",
+    "UPPER",
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "View all photos"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "SemiBold",
+    24,
+    24,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 7,
+   "sample": "Refined Living, Naturally."
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "SemiBold",
+    18,
+    18,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "What this place offers:"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "SemiBold",
+    40,
+    52,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "The Serendipity Experience"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "SemiBold",
+    30,
+    39.060001373291016,
+    0,
+    "LEFT",
+    null,
+    "UNDERLINE",
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "$150"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    24,
+    31.248001098632812,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "For 1 night"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    15,
+    19.530000686645508,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 6,
+   "sample": "GUEST"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "SemiBold",
+    72,
+    72,
+    0,
+    "CENTER",
+    "UPPER",
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "Your Private Escape Beneath Mount Marsden"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "SemiBold",
+    40,
+    40.79999923706055,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "Personal Info"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    15,
+    18,
+    0,
+    "LEFT",
+    "TITLE",
+    null,
+    "#000000"
+   ],
+   "count": 12,
+   "sample": "First Name"
+  },
+  {
+   "key": [
+    "Poppins",
+    "Regular",
+    15,
+    18,
+    0,
+    "LEFT",
+    "TITLE",
+    null,
+    "#000000"
+   ],
+   "count": 2,
+   "sample": "*I agree to the Terms & Condition and Privacy Policy"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Medium",
+    40,
+    40.79999923706055,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "Payment options"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    12,
+    15.59999942779541,
+    0,
+    "CENTER",
+    "UPPER",
+    null,
+    "#000000"
+   ],
+   "count": 2,
+   "sample": "Change"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "SemiBold",
+    24,
+    28.80000114440918,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "Your Private  / Escape Beneath  / Mount Marsden"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Medium",
+    40,
+    40.79999923706055,
+    0,
+    "CENTER",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "Reservation Confirmed"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    15,
+    22.799999237060547,
+    0,
+    "CENTER",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 1,
+   "sample": "Your reservation at Serendipity Mount Marsden is confirmed. You have s"
+  },
+  {
+   "key": [
+    "Rethink Sans",
+    "Regular",
+    15,
+    22.799999237060547,
+    0,
+    "LEFT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 5,
+   "sample": "Confirmation Code"
+  },
+  {
+   "key": [
+    "Spline Sans",
+    "SemiBold",
+    18,
+    27.360000610351562,
+    0,
+    "RIGHT",
+    null,
+    null,
+    "#000000"
+   ],
+   "count": 5,
+   "sample": "ER53791"
+  }
+ ],
+ "colors": {
+  "#000000": 696
+ }
+}
