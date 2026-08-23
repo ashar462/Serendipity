@@ -104,10 +104,11 @@ async function upload(path, b64str){
 }
 
 (async function main(){
-  // mode=json: just re-fetch the file JSONs and upload (fast, no rate limits)
-  if (qs.get("mode") === "json") {
-    $status.textContent = "Figma JSON le raha hoon…";
-    try {
+  // Step 0: ensure the design JSONs exist on the server (fast, no rate limit)
+  try {
+    const need = await (await fetch("/have-json")).json();
+    if (!need.json) {
+      $status.textContent = "Figma JSON restore ho raha hai…";
       for (const [path, url] of [
         ["figma-export/file-depth3.json", `https://api.figma.com/v1/files/${KEY}?depth=3`],
         ["figma-export/file.json", `https://api.figma.com/v1/files/${KEY}`],
@@ -120,11 +121,9 @@ async function upload(path, b64str){
         log("✔ " + path + " (" + Math.round(txt.length/1024) + " KB)");
         $status.textContent = "Uploaded: " + path;
       }
-      $status.textContent = "✅ JSON complete!";
-      $done.style.display = "block"; setBar(1);
-    } catch (e) { log("FATAL " + e.message); $fail.style.display = "block"; $status.textContent = "❌ " + e.message; }
-    return;
-  }
+    }
+  } catch (e) { log("json step failed (continuing to renders): " + e.message); }
+  if (qs.get("mode") === "json") { $status.textContent = "✅ JSON complete!"; $done.style.display = "block"; setBar(0.2); return; }
   $status.textContent = "Manifest le raha hoon…";
   const [manifest, haveArr] = await Promise.all([
     (await fetch("/manifest.json")).json(),

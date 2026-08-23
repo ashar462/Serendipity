@@ -52,6 +52,11 @@ const server = http.createServer((req, res) => {
     return res.end(JSON.stringify(out));
   }
 
+  if (req.method === "GET" && url.pathname === "/have-json") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    return res.end(JSON.stringify({ json: fs.existsSync(path.join(OUT, "file.json")) }));
+  }
+
   if (req.method === "GET" && url.pathname === "/stats") {
     res.writeHead(200, { "Content-Type": "application/json" });
     return res.end(JSON.stringify(received));
