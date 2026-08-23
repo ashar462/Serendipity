@@ -132,7 +132,12 @@ async function upload(path, b64str){
       }
     }
   } catch (e) { log("json step failed (continuing to renders): " + e.message); }
-  if (qs.get("mode") === "json") { $status.textContent = "✅ JSON complete!"; $done.style.display = "block"; setBar(0.2); return; }
+  if (qs.get("mode") !== "renders") {
+    // default mode: JSON only (fast, reliable) — renders need ?mode=renders
+    $status.textContent = "✅ JSON complete! Ab chat mein 'done' likh dein.";
+    $done.style.display = "block"; setBar(1);
+    return;
+  }
   $status.textContent = "Manifest le raha hoon…";
   const [manifest, haveArr] = await Promise.all([
     (await fetch("/manifest.json")).json(),
