@@ -30,19 +30,14 @@ export default function Header() {
         <span className="t-label-19" style={{ fontSize: 14, letterSpacing: 2 }}>MENU</span>
       </button>
 
-      {/* logo — 128×32 centered (asset pending from client) */}
-      <div
-        style={{
-          position: 'absolute',
-          left: 896, top: 34,
-          width: 128, height: 32,
-          display: 'grid', placeItems: 'center',
-        }}
+      {/* logo — 128×32 @ (896,34), horizontally centered */}
+      <a
+        href="/"
+        style={{ position: 'absolute', left: 896, top: 34, width: 128, height: 32, display: 'block' }}
+        aria-label="Serendipity home"
       >
-        <span style={{ fontWeight: 700, fontSize: 15, letterSpacing: 4, textTransform: 'uppercase' }}>
-          Serendipity
-        </span>
-      </div>
+        <img src="/assets/logo.png" alt="Serendipity" style={{ width: 128, height: 32, objectFit: 'contain' }} />
+      </a>
     </header>
   )
 }
