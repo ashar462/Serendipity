@@ -16,6 +16,7 @@ let received = { files: 0, bytes: 0, recent: [] };
 
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, "http://localhost");
+  console.log(`[req] ${req.method} ${req.url} from ${req.headers.host || "?"}`);
   res.setHeader("Access-Control-Allow-Origin", "*");
   if (req.method === "OPTIONS") { res.writeHead(204); return res.end(); }
 
